@@ -5,13 +5,7 @@
 #
 
 obj-y 	+= platform.o
-obj-$(CONFIG_OPLUS_FEATURE_FEEDBACK) 	+= feedback/
-obj-$(CONFIG_OPLUS_FEATURE_UBOOT_LOG) 	+= uboot_log/
-obj-$(CONFIG_OPLUS_FEATURE_SHUTDOWN_DETECT)    += shutdown_detect/
-obj-$(CONFIG_OPLUS_FEATURE_SLABTRACE_DEBUG) +=  slabtrace/
 obj-$(CONFIG_OPLUS_FEATURE_OPROJECT) 	+= oplus_project/
-obj-$(CONFIG_OPLUS_FEATURE_QCOM_MINIDUMP_ENHANCE) 	+= qcom_minidump/
-obj-$(CONFIG_OPLUS_FEATURE_PHOENIX)     += oppo_phoenix/
 obj-$(CONFIG_OPLUS_FEATURE_SAUPWK)     += oppo_saupwk/
 obj-$(CONFIG_OPLUS_FEATURE_DUMP_DEVICE_INFO)	+=  dump_device_info/
 obj-$(CONFIG_OPLUS_FEATURE_RECORD_MDMRST)     += mdmrst/

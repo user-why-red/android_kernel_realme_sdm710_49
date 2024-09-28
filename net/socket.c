@@ -2028,11 +2028,6 @@ static int ___sys_sendmsg(struct socket *sock, struct user_msghdr __user *msg,
 
 out_freectl:
 	if (ctl_buf != ctl){
-#ifdef CONFIG_OPLUS_SECURE_GUARD
-#ifdef CONFIG_OPLUS_ROOT_CHECK
-		memset(ctl_buf, 0, ctl_len);
-#endif /* CONFIG_OPLUS_ROOT_CHECK */
-#endif /* CONFIG_OPLUS_SECURE_GUARD */
 		sock_kfree_s(sock->sk, ctl_buf, ctl_len);
 	}
 out_freeiov:
@@ -2344,7 +2339,7 @@ int __sys_recvmmsg(int fd, struct mmsghdr __user *mmsg, unsigned int vlen,
 		 * error to return on the next call or if the
 		 * app asks about it using getsockopt(SO_ERROR).
 		 */
-		sock->sk->sk_err = -err;
+		WRITE_ONCE(sock->sk->sk_err, -err);
 	}
 out_put:
 	fput_light(sock->file, fput_needed);
